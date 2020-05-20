@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Candara;
+  src: url("./fonts/Candara.ttf");
+}
+
+@font-face {
+  font-family: Candara-Light;
+  src: url("./fonts/Candaral.ttf");
+}
+@font-face {
+  font-family: Candara-Bold;
+  src: url("./fonts/Candarab.ttf");
+}
+@font-face {
+  font-family: Candara-Italic;
+  src: url("./fonts/Candarai.ttf");
+}
