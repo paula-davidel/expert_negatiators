@@ -1,87 +1,71 @@
-<?php get_header();?>
+<?php
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WordPress
+ * @subpackage Expert_Negotiators
+ * @since Expert Negotiators 1.0
+ * @version 1.0
+ */
 
-    <main>
+get_header(); ?>
 
-      <div class="hero-container">
+<div class="wrap">
+	<?php if ( is_home() && ! is_front_page() ) : ?>
+		<header class="page-header">
+			<h1 class="page-title"><?php single_post_title(); ?></h1>
+		</header>
+	<?php else : ?>
+	<header class="page-header">
+		<h2 class="page-title"><?php _e( 'Posts', 'expertnegotiators' ); ?></h2>
+	</header>
+	<?php endif; ?>
 
-        <button id="hero-btn-left" class="hero-btn-left hero-btn-inactive">
-          <img
-            alt="arrow left for slides"
-            src="<?php echo img_src(); ?>purple-arrow-left.png"
-          />
-        </button>
-        <button id="hero-btn-right" class="hero-btn-right">
-          <img
-            alt="arrow right for slides"
-            src="<?php echo img_src(); ?>purple-arrow-left.png"
-          />
-        </button>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
 
-        <div class="hero">
-        	<?php get_template_part("slidebar");?>
-        </div>
+			<?php
+			if ( have_posts() ) :
 
+				// Start the Loop.
+				while ( have_posts() ) :
+					the_post();
 
-        <img class="hero-bkg-dots" src="<?php echo img_src(); ?>dots-grid.png" alt="">
+					/*
+					 * Include the Post-Format-specific template for the content.
+					 * If you want to override this in a child theme, then include a file
+					 * called content-___.php (where ___ is the Post Format name) and that
+					 * will be used instead.
+					 */
+					get_template_part( 'template-parts/post/content', get_post_format() );
 
-        <div class="hero-dots">
-          <div id="hero-dot-1" class="hero-dot-active"></div>
-          <div id="hero-dot-2"></div>
-          <div id="hero-dot-3"></div>
-        </div>
+				endwhile;
 
-      </div>
+				the_posts_pagination(
+					array(
+						'prev_text'          => expertnegotiators_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'expertnegotiators' ) . '</span>',
+						'next_text'          => '<span class="screen-reader-text">' . __( 'Next page', 'expertnegotiators' ) . '</span>' . expertnegotiators_get_svg( array( 'icon' => 'arrow-right' ) ),
+						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'expertnegotiators' ) . ' </span>',
+					)
+				);
 
-      <div class="services-display">
-          <?php get_template_part("services");?>
-      </div>
+			else :
 
-      <div class="tablet-display">
-        <img src="<?php echo img_src(); ?>grey-line.png" alt="" class="tablet-grey-line">
-        <img src="<?php echo img_src(); ?>oblique-lines.png" alt="" class="tablet-oblique-lines">
-        <img src="<?php echo img_src(); ?>dots-grid-grey.png" alt="" class="tablets-dots-grey">
-        <div class="tablet-display-image">
-          <img src="<?php echo img_src(); ?>tablet.png" alt="" />
-        </div>
+				get_template_part( 'template-parts/post/content', 'none' );
 
-        <div class="tablet-display-text">
-          <h1>
-            Daca exista vreo cale de a
-            <br />
-            economisi bani in shipping,
-            <br />
-            Expert Negotiators va arata cum!
-          </h1>
-          <p>
-            Aducem o transparenta fara precedent in industria de curierat si va
-            punem la dispozitie experianta noastra.
-          </p>
-        </div>
-      </div>
+			endif;
+			?>
 
-      <div class="big-display">
-        <?php get_template_part("big_display");?>
-      </div>
+		</main><!-- #main -->
+	</div><!-- #primary -->
+</div><!-- .wrap -->
 
-      <div class="counters-container">
-       <?php get_template_part("counters");?>
-      </div>
-
-      <div class="blog">
- 		   <?php get_template_part("blog");?>
-      </div>
-
-      <div class="grey-area">
-        <?php get_template_part("grey_area");?>
-      </div>
-
-      <div class="testimonials">
-        <?php get_template_part("testimonials");?>
-      </div>
-
-      <div class="contact-form-container">
-       <?php get_template_part("contact");?>
-      </div>
-    </main>
-
-    <?php get_footer();?>
+<?php
+get_footer();

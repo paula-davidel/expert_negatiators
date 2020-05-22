@@ -1,60 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Saira:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="<?php echo style_src(); ?>style.css" />
-    <title>Acasa</title>
-  </head>
+<?php
+/**
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Expert_Negotiators
+ * @since Expert Negotiators 1.0
+ * @version 1.0
+ */
 
-  <body>
-    <nav>
-      <div class="nav-grid">
-        <div class="navbar-header">
-          <div class="navbar-logo">
-            <img
-              src="<?php echo img_src(); ?>nav-logo.png"
-              alt="expert negotiators logo: choose smart, spend less"
-            />
-          </div>
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?> class="no-js no-svg">
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
 
-          <div id="navbar-mobile-toggle" class="navbar-mobile">
-            <div id="navbar-line-1" class="navbar-mobile-line"></div>
-            <div id="navbar-line-2" class="navbar-mobile-line"></div>
-          </div>
-        </div>
+<?php wp_head(); ?>
+</head>
 
-        <a class="link1 mobile-hide" href="index.html">Acasa</a>
-        <a class="link2 mobile-hide" href="./pages/about.html">Despre Noi</a>
-        <a class="link3 mobile-hide" href="./pages/servicii.html">Servicii</a>
-        <a class="link4 mobile-hide" href="./pages/blog.html">Blog </a>
-        <a class="link5 mobile-hide" href="./pages/contact.html">Contact</a>
-        <a class="link6 btn navbar-btn mobile-hide">Analiza GRATUITA</a>
-      </div>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+<div id="page" class="site">
 
-      <div>
-        <div class="navbar-language-selector mobile-hide">
-          <div class="flag hide">
-            <img src="<?php echo img_src(); ?>en.png" alt="usa flag" />
-          </div>
-          <div class="flag">
-            <img src="<?php echo img_src(); ?>en.png" alt="romania flag" />
-          </div>
-          <div class="select">
-            <select name="language">
-              <option value="en">en</option>
-              <option value="ro">ro</option>
-            </select>
-            <img
-              class="select-arrow-down"
-              src="<?php echo img_src(); ?>arrow-down.png"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
-    </nav>
+	<header id="masthead" class="site-header" role="banner">
+
+		<?php get_template_part( 'template-parts/header/header', 'image' ); ?>
+
+		<?php if ( has_nav_menu( 'top' ) ) : ?>
+			<div class="navigation-top">
+				<div class="wrap">
+					<?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>
+				</div><!-- .wrap -->
+			</div><!-- .navigation-top -->
+		<?php endif; ?>
+
+	</header><!-- #masthead -->
+
+	<?php
+
+	/*
+	 * If a regular post or page, and not the front page, show the featured image.
+	 * Using get_queried_object_id() here since the $post global may not be set before a call to the_post().
+	 */
+	if ( ( is_single() || ( is_page() && ! expertnegotiators_is_frontpage() ) ) && has_post_thumbnail( get_queried_object_id() ) ) :
+		echo '<div class="single-featured-image-header">';
+		echo get_the_post_thumbnail( get_queried_object_id(), 'expertnegotiators-featured-image' );
+		echo '</div><!-- .single-featured-image-header -->';
+	endif;
+	?>
+
+	<div class="site-content-contain">
+		<div id="content" class="site-content">

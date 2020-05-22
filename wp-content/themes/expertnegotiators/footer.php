@@ -1,85 +1,51 @@
- <footer>
-      <div class="button-to-top">
-        <img src="<?php echo img_src(); ?>footer-arrow.png" alt="">
-      </div>
-      <div class="footer">
-        <div class="footer-lists">
-          <ul class="footer-links">
-            <li>
-              <a href="">
-                Acasa
-              </a>
-            </li>
-            <li>
-              <a href="">
-                Despre Noi
-              </a>
-            </li>
-            <li>
-              <a href="">
-                Servicii
-              </a>
-            </li>
-            <li>
-              <a href="">
-                Blog
-              </a>
-            </li>
-            <li>
-              <a href="./pages/contact.html">
-                Contact
-              </a>
-            </li>
-          </ul>
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Expert_Negotiators
+ * @since Expert Negotiators 1.0
+ * @version 1.2
+ */
 
-          <div class="footer-social">
-            <a href="">
-              <div class="social-img">
-                <img src="<?php echo img_src(); ?>facebook.png" alt="" />
-              </div>
-            </a>
+?>
 
-            <a href="">
-              <div class="social-img">
-                <img src="<?php echo img_src(); ?>linkedin.png" alt="" />
-              </div>
-            </a>
+		</div><!-- #content -->
 
-            <a href="">
-              <div class="social-img">
-                <img src="<?php echo img_src(); ?>twitter.png" alt="" />
-              </div>
-            </a>
-          </div>
-        </div>
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="wrap">
+				<?php
+				get_template_part( 'template-parts/footer/footer', 'widgets' );
 
-        <div class="footer-logo">
-          <img src="<?php echo img_src(); ?>footer-logo.png" alt="" />
-        </div>
+				if ( has_nav_menu( 'social' ) ) :
+					?>
+					<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'expertnegotiators' ); ?>">
+						<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'social',
+									'menu_class'     => 'social-links-menu',
+									'depth'          => 1,
+									'link_before'    => '<span class="screen-reader-text">',
+									'link_after'     => '</span>' . expertnegotiators_get_svg( array( 'icon' => 'chain' ) ),
+								)
+							);
+						?>
+					</nav><!-- .social-navigation -->
+					<?php
+				endif;
 
-        <div class="newsletter">
-          <div class="newsletter-text">
-            <h1>NEWSLETTER</h1>
-            <p>Ramai conectat cu cele mai noi oferte...</p>
-          </div>
-          <div class="newsletter-form-container">
-            <form action="POST">
-              <input
-                id="newsletter"
-                placeholder="Email..."
-                type="email"
-                name="newsletter"
-              />
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        @2020 Expert Negotiators. All rights reserved.
-        <a href=""> Terms of use</a> and <a href="">Privacy Policy.</a>
-      </div>
-    </footer>
-     <script src="<?php echo script_src(); ?>hp.js"></script>
-    <script src="<?php echo script_src(); ?>nav.js"></script>
-  </body>
+				get_template_part( 'template-parts/footer/site', 'info' );
+				?>
+			</div><!-- .wrap -->
+		</footer><!-- #colophon -->
+	</div><!-- .site-content-contain -->
+</div><!-- #page -->
+<?php wp_footer(); ?>
+
+</body>
 </html>

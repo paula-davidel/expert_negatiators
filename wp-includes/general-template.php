@@ -113,6 +113,42 @@ function get_template_part( $slug, $name = null ) {
 	locate_template( $templates, true, false );
 }
 
+function get_page_template_part( $slug, $name = null ) {
+	/**
+	 * Fires before the specified template part file is loaded.
+	 *
+	 * The dynamic portion of the hook name, `$slug`, refers to the slug name
+	 * for the generic template part.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string      $slug The slug name for the generic template.
+	 * @param string|null $name The name of the specialized template.
+	 */
+	do_action( "get_page_template_part{$slug}", $slug, $name );
+
+	$templates = array();
+	$name      = (string) $name;
+	if ( '' !== $name ) {
+		$templates[] = "/template-parts/page/{$slug}-{$name}.php";
+	}
+
+	$templates[] = "/template-parts/page/{$slug}.php";
+
+	/**
+	 * Fires before a template part is loaded.
+	 *
+	 * @since 5.2.0
+	 *
+	 * @param string   $slug      The slug name for the generic template.
+	 * @param string   $name      The name of the specialized template.
+	 * @param string[] $templates Array of template files to search for, in order.
+	 */
+	do_action( 'get_template_part', $slug, $name, $templates );
+
+	locate_template( $templates, true, false );
+}
+
 /**
  * Display search form.
  *

@@ -446,7 +446,7 @@ class WP_Admin_Bar {
 		}
 
 		?>
-		<div id="wpadminbar" class="<?php echo $class; ?>">
+	<!-- 	<div id="wpadminbar" class="<?php echo $class; ?>">
 			<?php if ( ! is_admin() ) { ?>
 				<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1"><?php _e( 'Skip to toolbar' ); ?></a>
 			<?php } ?>
@@ -460,7 +460,7 @@ class WP_Admin_Bar {
 			<?php if ( is_user_logged_in() ) : ?>
 			<a class="screen-reader-shortcut" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php _e( 'Log Out' ); ?></a>
 			<?php endif; ?>
-		</div>
+		</div> -->
 
 		<?php
 	}

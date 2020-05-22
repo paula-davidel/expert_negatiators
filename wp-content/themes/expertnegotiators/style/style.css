@@ -11,7 +11,6 @@
  Text Domain:  expertnegotiators
 */
 
-
 @import "./navigation.css";
 @import "./fonts.css";
 @import "./footer.css";
@@ -349,6 +348,9 @@ animation-fill-mode: forwards;
   align-items: center;
   position: relative;
   overflow: visible;
+  padding-top: 100px;
+  text-shadow: 0 0 black;
+  padding-bottom: 100px;
 }
 
 .services-display-description {
@@ -360,6 +362,7 @@ animation-fill-mode: forwards;
   margin-left: 210px;
   margin-right: 50px;
   position: relative;
+  padding-top: 100px;
 }
 
 .services {
@@ -413,9 +416,9 @@ animation-fill-mode: forwards;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 307px;
-  height: 61px;
-  font-size: 22px;
+  width: 300px;
+  height: 90px;
+  font-size: 17px;
   margin-top: 70px;
 }
 
@@ -614,15 +617,15 @@ animation-fill-mode: forwards;
 }
 
 .big-display-item-btn {
-  margin-top: 60px;
-  background-color: var(--pink);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 234px;
-  height: 61px;
-  text-transform: uppercase;
-  font-size: 20px;
+    margin-top: 20px;
+    background-color: var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+    height: 50px;
+    text-transform: uppercase;
+    font-size: 17px;
 }
 
 .big-display-hr {
@@ -702,6 +705,9 @@ animation-fill-mode: forwards;
   position: relative;
   overflow: visible;
   color: #2e1e5c;
+  padding-top: 100px;
+  text-shadow: 0 0 black;
+  padding-bottom: 100px;
 }
 
 .blog-img {
@@ -899,6 +905,9 @@ animation-fill-mode: forwards;
   margin: 100px auto;
   position: relative;
   overflow: visible;
+  padding-top: 100px;
+  text-shadow: 0 0 black;
+  padding-bottom: 100px;
 }
 
 .grey-area-grid {
@@ -912,6 +921,8 @@ animation-fill-mode: forwards;
 .grid-area-grid-elem {
   align-self: center;
   justify-self: center;
+  width: 400px;
+  height: 300px;
 }
 
 .grey-area-icon {
@@ -1205,10 +1216,11 @@ animation-fill-mode: forwards;
   display: none;
 }
 
+
 .contact-form-container {
   max-width: 1400px;
   margin: 0 auto;
-  height: 702px;
+  height: 880px;
   display: flex;
   position: relative;
   margin-top: 50px;
@@ -1243,6 +1255,7 @@ textarea {
 }
 
 .contact-title {
+  padding-top: 100px;
   margin-bottom: 50px;
   font-family: Candara-Light;
   font-size: 50px;
@@ -1391,7 +1404,6 @@ textarea {
   .blog,
   .counters-container,
   .testimonials,
-  .contact-form-container,
   .services-display {
     margin: 100px;
   }
